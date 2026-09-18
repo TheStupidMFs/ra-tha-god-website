@@ -1,11 +1,7 @@
-const gate=document.querySelector("#gate"),site=document.querySelector("#site"),modal=document.querySelector("#storyModal");
-window.addEventListener("load",()=>{setTimeout(()=>{const l=document.querySelector("#loader");if(l)l.style.opacity="0"},650);setTimeout(()=>document.querySelector("#loader")?.remove(),1100)});
-function enterWorld(target){gate.style.transition="opacity .8s,filter .8s,transform .8s";gate.style.filter="blur(12px) saturate(1.8)";gate.style.transform="scale(1.04)";gate.style.opacity="0";site.classList.add("active");site.setAttribute("aria-hidden","false");document.body.classList.remove("locked");setTimeout(()=>{gate.style.display="none";if(target)document.querySelector(target)?.scrollIntoView()},850)}
-document.querySelector("#enterBtn")?.addEventListener("click",()=>enterWorld());
-document.querySelector("#storyBtn")?.addEventListener("click",()=>modal.classList.add("open"));
-document.querySelector("#closeStory")?.addEventListener("click",()=>modal.classList.remove("open"));
-document.querySelector("#storyEnter")?.addEventListener("click",e=>{e.preventDefault();modal.classList.remove("open");enterWorld("#story")});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("open")});
-const cursor=document.querySelector(".cursor");window.addEventListener("pointermove",e=>{if(cursor){cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px"}});
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("seen")}),{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+const menu=document.querySelector(".menuBtn"),nav=document.querySelector(".topbar nav");menu?.addEventListener("click",()=>nav.classList.toggle("open"));
+document.querySelectorAll('a[href$=".html"],a[href*=".html#"]').forEach(a=>a.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey)return;e.preventDefault();const href=a.getAttribute("href"),t=document.querySelector(".transition");t.style.transition="transform .35s ease";t.style.transform="translateY(0)";setTimeout(()=>location.href=href,330)}));
+const gate=document.querySelector("#gate"),enter=document.querySelector("#enter");if(gate&&sessionStorage.getItem("ra-entered"))gate.remove();enter?.addEventListener("click",()=>{sessionStorage.setItem("ra-entered","1");gate.style.transition="opacity .7s,filter .7s";gate.style.opacity="0";gate.style.filter="blur(15px)";setTimeout(()=>gate.remove(),720)});
+const screen=document.querySelector("#movieScreen"),title=document.querySelector("#movieTitle"),tag=document.querySelector("#movieTag");
+document.querySelectorAll(".poster[data-local],.poster[data-youtube]").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".poster").forEach(x=>x.classList.remove("active"));btn.classList.add("active");title.textContent=btn.dataset.title;tag.textContent=btn.dataset.tag;if(btn.dataset.local)screen.innerHTML=`<video controls autoplay playsinline><source src="${btn.dataset.local}" type="video/mp4"></video>`;else screen.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${btn.dataset.youtube}?autoplay=1&rel=0" title="${btn.dataset.title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`}));
+if(location.hash==="#baggage")setTimeout(()=>document.querySelector('[data-youtube="bYcH5RZAA7I"]')?.click(),100);
