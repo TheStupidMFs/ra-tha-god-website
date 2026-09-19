@@ -18,3 +18,152 @@
 .weather-fx.rain:after{content:"";position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(0deg,#42e8ff0e,transparent);filter:blur(8px)}
 @media(hover:hover) and (pointer:fine){body:hover .cursorGlow{opacity:1}}
 @media(max-width:800px){.chapterTitle strong{font-size:20vw;white-space:normal}.heroTitle span,.heroTitle strong{font-size:27vw}.metroRail{top:auto;bottom:0;right:0;left:0;transform:none;flex-direction:row;justify-content:space-around;background:#050507e8;backdrop-filter:blur(12px);padding:8px 10px}.metroLine{left:7%;right:7%;top:12px;bottom:auto;width:auto;height:1px}.metroRail a{flex-direction:column;gap:4px}.metroRail span{opacity:1;transform:none;font-size:5px}.cityTransition{height:55px}.cityTransition span{font-size:30px}.storefrontSign{margin-inline:15px}.cursorGlow{display:none}}
+
+
+/* V6.1 — FINAL ASSET + INTERACTION POLISH */
+
+/* Weather remains informational in the header; no full-screen weather overlay. */
+.weather-fx,
+.weather-fx.rain,
+.weather-fx.mist,
+.weather-fx.clear,
+.weather-fx.rain::after{
+  display:none!important;
+  opacity:0!important;
+  background:none!important;
+  animation:none!important;
+}
+
+/* Accent rule belongs BELOW the display word — never through the glyphs. */
+.chapterTitle strong{
+  padding-bottom:.13em;
+}
+.chapterTitle strong:after{
+  left:0!important;
+  right:auto!important;
+  bottom:0!important;
+  width:100%!important;
+  height:.055em!important;
+  transform:skewX(-18deg) translateY(35%)!important;
+  transform-origin:left center;
+  mix-blend-mode:normal!important;
+  z-index:1;
+}
+.heroTitle strong{
+  padding-bottom:.10em;
+}
+.heroTitle strong:after{
+  bottom:-.015em!important;
+}
+
+/* Entrance is intentionally oversized and unmistakably clickable. */
+#enter{
+  min-width:min(520px,86vw)!important;
+  min-height:92px!important;
+  padding:24px 42px!important;
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  border:2px solid #fff!important;
+  background:#050507e8!important;
+  box-shadow:0 16px 55px #000a,0 0 0 1px #42e8ff33;
+  font-size:clamp(15px,1.35vw,21px)!important;
+  letter-spacing:.16em!important;
+  transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease!important;
+}
+#enter small{
+  color:var(--blue);
+  font-size:12px;
+  letter-spacing:.15em;
+}
+#enter:hover{
+  transform:translateX(-50%) translateY(-4px)!important;
+  background:var(--lime)!important;
+  color:#050507!important;
+  border-color:var(--lime)!important;
+  box-shadow:0 20px 65px #000b,0 0 30px #dfff3238;
+}
+#enter:hover small{color:#050507}
+
+/* Real product photography. */
+.productVisual.productPhoto{
+  height:560px;
+  display:block;
+  overflow:hidden;
+  background:#0a0b0d;
+}
+.productVisual.productPhoto img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .3s ease;
+}
+.products>a:hover .productPhoto img{
+  transform:scale(1.035);
+  filter:brightness(1.05);
+}
+.productVisual.productPhoto small{
+  z-index:2;
+  padding:8px 10px;
+  background:#050507dc;
+}
+.viewTag{
+  position:absolute;
+  z-index:2;
+  right:18px;
+  bottom:18px;
+  padding:10px 12px;
+  background:#050507df;
+  border:1px solid #fff4;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+
+/* Clickable controls should always read as interactive. */
+button,
+.actions a,
+.lineBtn,
+.emailButton,
+.social a,
+.products>a,
+.film,
+.metroRail a,
+.toTop{
+  cursor:pointer;
+}
+button:focus-visible,
+a:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:4px;
+}
+
+/* Replace the browser-looking catalog scrollbar with a quiet custom rail. */
+.releases{
+  scrollbar-width:thin;
+  scrollbar-color:var(--blue) #11151a;
+}
+.releases::-webkit-scrollbar{height:6px}
+.releases::-webkit-scrollbar-track{background:#11151a}
+.releases::-webkit-scrollbar-thumb{background:var(--blue);border-radius:99px}
+
+/* Local covers are treated consistently. */
+.releases img{
+  background:#101317;
+  transition:transform .35s ease,filter .35s ease;
+}
+.releases article:hover img{
+  transform:scale(1.018);
+  filter:brightness(1.06);
+}
+
+@media(max-width:800px){
+  #enter{
+    min-width:82vw!important;
+    min-height:78px!important;
+    padding:20px 24px!important;
+  }
+  .productVisual.productPhoto{height:440px}
+}
