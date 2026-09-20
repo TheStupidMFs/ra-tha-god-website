@@ -167,3 +167,48 @@ a:focus-visible{
   }
   .productVisual.productPhoto{height:440px}
 }
+
+
+/* V6.2 — brand/navigation/streaming polish */
+.topbar{height:74px;padding:0 3vw;border-bottom:1px solid #ffffff1f;background:linear-gradient(180deg,#07090bf7,#050507ed);box-shadow:0 8px 30px #0007}
+.brand{display:flex;align-items:center;gap:11px;min-width:235px}
+.brand img{width:44px;height:44px;box-shadow:0 0 0 1px #fff2,0 0 24px #42e8ff10}
+.brand span{display:flex;flex-direction:column;gap:3px;white-space:nowrap}
+.brand b{font:15px Anton,"Bebas Neue",sans-serif;letter-spacing:.12em}
+.brand small{font-size:5px;letter-spacing:.17em;color:#6f777d;font-weight:800}
+.topbar nav{height:100%;align-items:center;gap:4px;padding:0 7px;border-left:1px solid #fff1;border-right:1px solid #fff1}
+.topbar nav a{height:100%;padding:0 13px;display:flex;align-items:center;gap:6px;position:relative;font-size:8px;transition:color .2s ease,background .2s ease}
+.topbar nav a i{font-style:normal;font-size:5px;color:#555d63;letter-spacing:.08em;transition:.2s}
+.topbar nav a:after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:center;transition:transform .22s ease;box-shadow:0 0 12px #42e8ff88}
+.topbar nav a:hover,.topbar nav a.active{background:#ffffff05;color:#f3f0e8}
+.topbar nav a:hover:after,.topbar nav a.active:after{transform:scaleX(1)}
+.topbar nav a.active i{color:var(--blue)}
+.tokyo-status{min-width:205px;justify-content:flex-end}
+
+.streamLinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.streamBtn{min-width:188px;height:58px;padding:0 15px;display:flex;align-items:center;gap:11px;border:1px solid #fff4;background:#090b0de8;transition:transform .2s ease,border-color .2s ease,background .2s ease;box-shadow:0 8px 28px #0005}
+.streamBtn svg{width:25px;height:25px;flex:none;fill:none;stroke:#f3f0e8;stroke-width:1.7}
+.spotifyBtn svg circle{fill:#f3f0e8;stroke:none}.spotifyBtn svg path{stroke:#050507;stroke-width:1.5;fill:none}
+.streamBtn span{display:flex;flex-direction:column;gap:3px;font-size:9px;font-weight:900;letter-spacing:.12em;line-height:1}
+.streamBtn span small{font-size:5px;color:#747b80;letter-spacing:.17em}
+.streamBtn>b{margin-left:auto;font-size:13px}
+.streamBtn:hover{transform:translateY(-3px);border-color:var(--blue);background:#11171a}
+.appleBtn:hover{border-color:var(--amber)}
+
+/* Cinema now shares the site's warm amber/orange chapter language. */
+.cinemaTitle strong:after{background:var(--amber)!important}
+.cinema.open .cinemaTitle strong{text-shadow:0 0 18px #ffb44a3d!important}
+
+/* A centered brand monument turns the open shop area into a storefront facade. */
+.storeBrandMark{width:min(430px,80vw);height:260px;margin:-10px auto 42px;position:relative;display:flex;align-items:center;justify-content:center;gap:24px;border-top:1px solid #fff1;border-bottom:1px solid #fff1}
+.storeBrandMark:before,.storeBrandMark:after{content:"";position:absolute;width:54px;height:1px;background:var(--amber);top:50%}
+.storeBrandMark:before{left:-70px}.storeBrandMark:after{right:-70px}
+.storeBrandMark img{position:relative;z-index:2;width:150px;height:150px;object-fit:cover;box-shadow:0 20px 55px #000c,0 0 0 1px #fff3}
+.storeLogoHalo{position:absolute;width:230px;height:230px;border:1px solid #42e8ff1f;transform:rotate(45deg);box-shadow:0 0 80px #42e8ff12,inset 0 0 50px #42e8ff08}
+.storeBrandMark>div:last-child{position:relative;z-index:2;display:flex;flex-direction:column;gap:6px}
+.storeBrandMark small{font-size:6px;letter-spacing:.2em;color:var(--amber)}
+.storeBrandMark b{font:54px Anton,"Bebas Neue",sans-serif;line-height:.9;color:#f3f0e8}
+.storeBrandMark span{font-size:6px;letter-spacing:.2em;color:#737b80}
+
+@media(max-width:1100px){.brand span{display:none}.brand{min-width:auto}.tokyo-status{min-width:auto}.topbar nav a{padding-inline:9px}.topbar nav a i{display:none}}
+@media(max-width:800px){.topbar{height:60px}.topbar nav{height:auto;border:0}.topbar nav a{height:42px;padding:0}.topbar nav a:after{left:0;right:0}.streamBtn{min-width:0;flex:1}.storeBrandMark{height:210px;margin-bottom:28px}.storeBrandMark img{width:110px;height:110px}.storeLogoHalo{width:170px;height:170px}.storeBrandMark b{font-size:40px}.storeBrandMark:before,.storeBrandMark:after{display:none}}
