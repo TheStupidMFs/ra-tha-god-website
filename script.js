@@ -2,7 +2,7 @@ const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelecto
 const menu=$(".menuBtn"),nav=$(".topbar nav");menu?.addEventListener("click",()=>nav.classList.toggle("open"));$$(".topbar nav a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
 const gate=$("#gate"),enter=$("#enter"),audio=$("#baggageAudio"),dock=$("#audioDock"),toggle=$("#audioToggle"),clock=$("#audioTime");
 function enterWorld(){sessionStorage.setItem("ra-entered","1");if(gate){gate.style.transition="opacity .65s";gate.style.opacity="0";setTimeout(()=>gate.remove(),680)}dock?.classList.add("show");if(audio){audio.volume=.72;audio.play().then(()=>{dock.classList.remove("paused");toggle.textContent="❚❚"}).catch(()=>{dock.classList.add("paused");toggle.textContent="▶"})}}
-if(gate&&sessionStorage.getItem("ra-entered")){gate.remove();dock?.classList.add("show")}enter?.addEventListener("click",enterWorld);
+if(gate&&sessionStorage.getItem("ra-entered")){gate.remove();dock?.classList.add("show")}enter?.addEventListener("click",()=>{gate?.classList.add("scanning");setTimeout(enterWorld,420)});
 toggle?.addEventListener("click",()=>{if(audio.paused){audio.play();toggle.textContent="❚❚";dock.classList.remove("paused")}else{audio.pause();toggle.textContent="▶";dock.classList.add("paused")}});
 audio?.addEventListener("timeupdate",()=>{let s=Math.floor(audio.currentTime||0);clock.textContent=`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`});
 $$('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{let el=$(a.getAttribute("href"));if(el){e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"})}}));
